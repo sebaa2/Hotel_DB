@@ -16,7 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hotelapp.views import listar_reserva, listar_cliente, listar_hotel, listar_empleados, listar_habitacion, AgregarCliente, registrarCliente, crearReserva
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('lista-reserva/', listar_reserva, name="reserva"),
+    path('lista-clientes/', listar_cliente, name="clientes"),
+    path('lista-hotel/', listar_hotel, name="hotel"),
+    path('lista-empleados/', listar_empleados, name="empleados"),
+    path('lista-habitacion/', listar_habitacion, name="habitacion"),
+    path('registrar-clientes/', registrarCliente, name="registar-cliente"),
+    path('crear_reserva', crearReserva, name="crear_reserva"),
+    path('agregarclientes/', AgregarCliente)
 ]
