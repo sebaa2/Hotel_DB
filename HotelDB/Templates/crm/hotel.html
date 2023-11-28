@@ -1,0 +1,30 @@
+{% extends 'crm/interfaz.html' %}
+{% block content %}
+
+<h3>lista de hoteles</h3>
+<div class="alert alert-secondary" role="alert">
+    lista desplegable de hoteles en el sistema
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Celular</th>
+            <th>Correo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hot in hotel %}
+        <tr>
+            <td>{{hot.idhotel}}</td>
+            <td>{{hot.nombre}}</td>
+            <td>{{hot.direccion}}</td>
+            <td>{{hot.celular}}</td>
+            <td>{{hot.correo}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
