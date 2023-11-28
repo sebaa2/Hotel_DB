@@ -1,0 +1,33 @@
+{% extends 'crm/interfaz.html' %}
+{% block content %}
+
+<h3>reservas en el hotel</h3>
+<div class="alert alert-secondary" role="alert">
+    lista desplegable de reservas en el sistema
+</div>
+<table>
+    <a href="/registrar-clientes" class="btn btn-primary">agregar reserva</a>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha chekin</th>
+            <th>Fecha chekout</th>
+            <th>Estado de reserva</th>
+            <th>nombre del hotel</th>
+            <th>nombre del cliente</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for res in reserva %}
+        <tr>
+            <td>{{res.idreserva}}</td>
+            <td>{{res.fecha_chekin}}</td>
+            <td>{{res.fecha_chekout}}</td>
+            <td>{{res.estado_reserva}}</td>
+            <td>{{res.hotel_idhotel.nombre}}</td>
+            <td>{{res.cliente_idcliente.nombre}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
