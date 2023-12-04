@@ -19,3 +19,7 @@ class ReservaForms(forms.ModelForm):
             'hotel_idhotel' : forms.Select(attrs={'class': 'form-control'}),
             'cliente_idcliente' : forms.Select(attrs={'class': 'form-control'})
         }
+#agregar estos campos en models
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
