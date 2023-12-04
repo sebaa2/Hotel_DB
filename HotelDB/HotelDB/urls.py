@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CRM.views import listar_reserva, listar_cliente, listar_hotel, listar_empleados, listar_habitacion, AgregarCliente, registrarCliente, crearReserva, login_view, login_
+from CRM.views import listar_reserva, listar_cliente, listar_hotel, listar_empleados, listar_habitacion, AgregarCliente, logout, registrarCliente, crearReserva, login_view, login_
 
 
 urlpatterns = [
@@ -30,4 +30,5 @@ urlpatterns = [
     path('crear_reserva', crearReserva, name="crear_reserva"),
     path('agregarclientes/', AgregarCliente),
     path('login/',login_view, name="login"),
+    path('logout/',logout, name="logout"),
 ]

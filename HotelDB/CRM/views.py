@@ -97,8 +97,8 @@ def editarReserva(request, idreserva):
     else:
         form = ReservaForms(instance=reserva)
         context = {'form': form, 'reserva': reserva}
-    return render(request, 'crm/editar_reserva.html',context)
 
+    return render(request, 'crm/editar_reserva.html',context)
 
 #login para los empleados del hotel
 def login_view(request):
@@ -121,3 +121,8 @@ def login_view(request):
         except Empleados.DoesNotExist:
             form.add_error(None, "Usuario incorrecto")
     return render(request, 'crm/login.html', {'form': form})
+
+#cerrar sesion en el hotel de parte del empleado
+def logout(request):
+    request.session.pop('autenticado',None)
+    return redirect('/login')
