@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Principal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+    {% load static %}
+    
+    <style>
+        body {
+            background-image: url("{% static 'images/palmtree.jpg' %}");
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            overflow-x: hidden; /* Evitar el desplazamiento horizontal */
+        } 
+
+        .icono-enlace {
+            display: inline-block;
+            text-decoration: none;
+        }
+        .card-img-top {
+            width: 50%;
+            height: auto;
+        }
+        .card-text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-title {
+            font-size: 1.0rem;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .marquee p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 35s linear infinite;
+        }
+
+        @keyframes marquee {
+            0%   { transform: translate(100%, 200); }
+            100% { transform: translate(-100%, 0); }
+        }
+
+        .footer {
+            
+            color: #0f0e0e;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-icons {
+            list-style: none;
+            padding: 0;
+        }
+
+        .social-icons li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .producto-container {
+            background-color:rgba(0, 0, 0, 0.7); 
+            border: 2px solid #7410e6; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            margin-top: 25px;
+            border-radius: 10px;
+            width: 280px;
+            height: 540px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div style="background-color: rgb(53, 224, 210); padding: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <img src="{% static 'images/.png' %}" alt="Imagen importacion" style="width: 300px; margin-left:-100px; margin-top:10px; margin-bottom: 10px;">
+                </div>
+                <div class="col-6 text-end">
+                    <h1 style="text-align: center; margin-left: -600px; margin-top: 70px; color: #fff;">Bienvenido {% if user.is_authenticated %}{{ user.username }}{% endif %}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: #54e610; padding: 5px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="marquee">
+                        <p style="text-align: center; margin-bottom: 0;color: rgb(235, 229, 229);">Hospedaje hecho simple, viajes memorables | Reserva con confianza, vive con comodidad | ncuentra tu refugio ideal: reserva, relájate, repite  |  Explora destinos, vive momentos  |  Tu satisfacción es nuestra prioridad  </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <li>
+        <a href="{% url 'logout' %}" class="btn btn-primary">cerrar sesión</a>
+    </li>
+    <li>
+        <a href="#" class="btn btn-success">{{ user.username }}</a>
+    </li>
+    {% else %}
+    <li>
+        <a href="{% url 'login' %}" class="btn btn-primary">iniciar sesión</a>
+    </li>
+    <hr>
+    <li>
+        <a href="{% url 'registro' %}" class="btn btn-success">Registrate</a>
+    </li>
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="footer" style="width: 100%; box-sizing: border-box; background-color: #f3610c;" >
+        <h2>Síguenos en nuestras redes sociales</h2>
+        <ul class="social-icons">
+            <li><a href="#"><img src="{% static 'images/fb_64x64.png' %}" alt="Facebook"></a></li>
+            <li><a href="#"><img src="{% static 'images/x_64x64.png' %}" alt="Twitter"></a></li>
+            <li><a href="#"><img src="{% static 'images/ig_64x64.png' %}" alt="Instagram"></a></li>
+        </ul>        
+    </div>
+</body>
+</html>
