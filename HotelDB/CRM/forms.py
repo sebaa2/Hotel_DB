@@ -1,5 +1,12 @@
 from django import forms
 from .models import Reserva
+from django.contrib.auth.forms import UserCreationForm
+
+
+#esta clase es la del formulario de registro
+class CustomUserCreationForm(UserCreationForm):
+    pass
+#hasta aqui gg    
 
 class ReservaForms(forms.ModelForm):
     class Meta:
