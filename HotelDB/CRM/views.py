@@ -2,8 +2,29 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponseNotFound
 from .models import Reserva, Cliente, Hotel, Empleados, Habitacion
 from CRM.forms import LoginForm, ReservaForms
+from .forms import CustomUserCreationForm
+from django.contrib.auth import authenticate, login
 
-# Create your views here.
+
+def principal(request):
+    return render(request, 'reservas/principal.html')
+
+def registro(request):
+    data = {
+        'form' : CustomUserCreationForm()
+    }
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            return redirect(to ="principal")
+        data["form"] = formulario    
+    return render(request, 'registration/registro.html', data)
+
+
+
 def listar_reserva(request):
     #if para verificar si el usuario esta logeado
     if not request.session.get('autenticado'):
