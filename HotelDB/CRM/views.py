@@ -147,3 +147,16 @@ def login_view(request):
 def logout(request):
     request.session.pop('autenticado',None)
     return redirect('/login')
+
+from django.http import HttpResponseNotFound  
+def actualizar_reserva(request, idreserva):
+    reserva = get_object_or_404(Reserva, pk = idreserva)
+    if request.method =="POST":
+        form = ReservaForms(request.POST, instance = reserva)
+        if form.is_valid():
+            form.save()
+            return redirect('reserva')
+    else:
+        form = ReservaForms(instance = reserva)
+    context = {'form' : form,'reserva' : reserva}
+    return render(request,'crm/actualizar_reserva.html',context)
