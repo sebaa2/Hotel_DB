@@ -3,6 +3,7 @@ from django.urls import path, include
 from CRM.views import listar_reserva, listar_cliente, listar_hotel, listar_empleados, listar_habitacion, AgregarCliente, logout, registrarCliente, crearReserva, login_view, login_
 #direcciones del login y registro
 from reservas.views import principal, registro
+from CRM.views import actualizar_reserva
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -20,4 +21,6 @@ urlpatterns = [
     path('', principal, name='principal'),
     path('accounts/',include('django.contrib.auth.urls')),
     path('registro/', registro, name='registro'),
+    path('editar-reserva/<int:idreserva>',actualizar_reserva,name="editar_reserva"),
+
 ]
