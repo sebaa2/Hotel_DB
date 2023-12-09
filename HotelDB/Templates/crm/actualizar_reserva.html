@@ -1,0 +1,21 @@
+{% extends 'crm/interfaz.html' %}
+{% block content %}
+<h2>Actualizar reserva</h2>
+<hr>
+<!-- Tarjeta contenedora de formulario -->
+<div class="card">
+    <div class="card-header">
+        Ingrese los datos de reserva a modificar
+    </div>
+    <form name="frm_reserva" action="/editar-reserva/{{ reserva.idreserva }}" method="POST">
+        {% csrf_token %}
+        <div class="card-body">
+            {{ form.as_p }}
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Actualizar reserva</button>
+            <input type="button" class="btn btn-warning" value="Cancelar" onclick="javascript:history.back();">
+        </div>
+    </form>
+</div>
+{% endblock %}
