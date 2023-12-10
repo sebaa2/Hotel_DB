@@ -15,7 +15,7 @@
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
-            overflow-x: hidden; /* Evitar el desplazamiento horizontal */
+            overflow-x: hidden; 
         } 
 
         .icono-enlace {
@@ -88,12 +88,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <img src="{% static 'images/.png' %}" alt="Imagen importacion" style="width: 300px; margin-left:-100px; margin-top:10px; margin-bottom: 10px;">
+                    <img src="{% static 'images/tree.png' %}" alt="Imagen importacion" style="width: 100px; margin-left:-100px; margin-top:10px; margin-bottom: 10px;">
                 </div>
                 <div class="col-6 text-end">
                     <h1 style="text-align: center; margin-left: -600px; margin-top: 70px; color: #fff;">Bienvenido {% if user.is_authenticated %}{{ user.username }}{% endif %}</h1>
                 </div>
             </div>
+        </div>
+        <div class="container" style="margin-left: 1100px; margin-top: -45px;">
+            {% if user.is_authenticated %}
+                <a href="#" class="btn btn-dark btn-sm" >{{ user.username }}</a>
+                <a href="{% url 'logout' %}" class="btn btn-primary btn-sm">Cerrar sesión</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary btn-sm">Iniciar sesión</a>
+                <a href="{% url 'registro' %}" class="btn btn-success btn-sm">Registrate</a>
+            {% endif %}
         </div>
     </div>
 
@@ -108,25 +117,18 @@
             </div>
         </div>
     </div>
-    {% if user.is_authenticated %}
-    <li>
-        <a href="{% url 'logout' %}" class="btn btn-primary">cerrar sesión</a>
-    </li>
-    <li>
-        <a href="#" class="btn btn-success">{{ user.username }}</a>
-    </li>
-    {% else %}
-    <li>
-        <a href="{% url 'login' %}" class="btn btn-primary">iniciar sesión</a>
-    </li>
-    <hr>
-    <li>
-        <a href="{% url 'registro' %}" class="btn btn-success">Registrate</a>
-    </li>
-    {% endif %}
+    <div class="container" style="margin-left: 10px;">
+        <a href="#" class="btn btn-success">Reservas</a>
+        <a href="#" class="btn btn-success">Habitación</a>
+        <a href="#" class="btn btn-success">Empleados</a>
+        <a href="#" class="btn btn-success">Clientes</a>
+
+    </div>
     <br>
     <br>
     <br>
+    <br>
+    <br> 
     <br>
     <br>
     <br>
