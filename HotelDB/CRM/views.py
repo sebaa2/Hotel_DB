@@ -48,9 +48,6 @@ def listar_empleados(request):
 
 def listar_habitacion(request):
     #if para verificar si el usuario esta logeado
-    if not request.session.get('autenticado'):
-        return redirect('login')
-
     habitacion = Habitacion.objects.all()
     return render(request, 'crm/habitacion.html', {'habitacion': habitacion})
 #fin de las clases que recopilan los datos de la base de datos

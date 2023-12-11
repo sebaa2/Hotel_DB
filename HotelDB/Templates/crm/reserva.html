@@ -41,9 +41,8 @@
 
         $('.eliminar-reserva').click(function(e) {
             // Evita que se ejecute el evento por defecto del enlace
-            e.preventDefault(); 
+            e.preventDefault();
             var idreserva = $(this).data('id');
-            
             var confirmaEliminacion = confirm('¿Estás seguro de que deseas eliminar esta reseva?');
             if (confirmaEliminacion) {
                 // Redirecciona a la URL de eliminar gestión enviando el id requerido
