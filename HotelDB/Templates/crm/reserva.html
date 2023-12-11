@@ -6,7 +6,7 @@
     lista desplegable de reservas en el sistema
 </div>
 <table>
-    <a href="/registrar-clientes" class="btn btn-primary">agregar reserva</a>
+    <a href="/registrar-clientes/" class="btn btn-primary">agregar reserva</a>
     <thead>
         <tr>
             <th>ID</th>
@@ -26,8 +26,33 @@
             <td>{{res.estado_reserva}}</td>
             <td>{{res.hotel_idhotel.nombre}}</td>
             <td>{{res.cliente_idcliente.nombre}}</td>
+            <td><a href="{% url 'eliminar_reserva' res.idreserva %}" class="btn btn-primary"><i class="fa-solid fa-trash-can"></i>Eliminar</a>
+                <a href="{% url 'editar_reserva' res.idreserva %}" class="btn btn-primary"><i class="fa-solid fa-pencil"></i>Actualizar</a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<!-- Scripts de datatables y eliminar reserva -->
+
+<script>
+    $(document).ready(function() {
+        $('table').DataTable();
+
+        $('.eliminar-reserva').click(function(e) {
+            // Evita que se ejecute el evento por defecto del enlace
+            e.preventDefault(); 
+            var idreserva = $(this).data('id');
+            
+            var confirmaEliminacion = confirm('¿Estás seguro de que deseas eliminar esta reseva?');
+            if (confirmaEliminacion) {
+                // Redirecciona a la URL de eliminar gestión enviando el id requerido
+                window.location.href = '/eliminar-reserva/' + idreserva + '/';
+            }
+        });
+    });
+</script>
+
+
+
 {% endblock %}

@@ -8,14 +8,14 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
     {% load static %}
-    
+
     <style>
         body {
             background-image: url("{% static 'images/palmtree.jpg' %}");
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
-            overflow-x: hidden; 
+            overflow-x: hidden;
         } 
 
         .icono-enlace {
@@ -118,10 +118,10 @@
         </div>
     </div>
     <div class="container" style="margin-left: 10px;">
-        <a href="#" class="btn btn-success">Reservas</a>
-        <a href="#" class="btn btn-success">Habitación</a>
-        <a href="#" class="btn btn-success">Empleados</a>
-        <a href="#" class="btn btn-success">Clientes</a>
+        <a href="{% url 'reserva' %}" class="btn btn-success">Reservas</a>
+        <a href="{% url 'habitacion' %}" class="btn btn-success">Habitación</a>
+        <a href="{% url 'empleados' %}" class="btn btn-success">Empleados</a>
+        <a href="{% url 'clientes' %}" class="btn btn-success">Clientes</a>
 
     </div>
     <br>

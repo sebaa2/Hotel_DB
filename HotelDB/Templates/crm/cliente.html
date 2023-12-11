@@ -6,23 +6,24 @@
     lista desplegable de clientes en el sistema
 </div>
 <table>
+    <a href="/registrar-clientes/" class="btn btn-primary">agregar Cliente</a>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Direccion</th>
-            <th>Celular</th>
-            <th>Correo</th>
+            <th> ID </th>
+            <th> Nombre </th>
+            <th> Direccion </th>
+            <th> Celular </th>
+            <th> Correo </th>
         </tr>
     </thead>
     <tbody>
         {% for cli in cliente %}
         <tr>
-            <td>{{cli.idcliente}}</td>
-            <td>{{cli.nombre}}</td>
-            <td>{{cli.direccion}}</td>
-            <td>{{cli.celular}}</td>
-            <td>{{cli.correo}}</td>
+            <td>{{ cli.idcliente }}</td>
+            <td>{{ cli.nombre }}</td>
+            <td>{{ cli.direccion }}</td>
+            <td>{{ cli.celular }}</td>
+            <td>{{ cli.correo }}</td>
         </tr>
         {% endfor %}
     </tbody>
